@@ -1,0 +1,929 @@
+<?xml version="1.0" encoding="utf-8"?>
+<commands xmlns="http://schema.vanbergen.local/Tools/CherryUpdater/CommandFile" compatibleProductModels="PC677,PC728,PC906,PC1007">
+  <deviceMap>
+    <entry model="PC677" name="Cherry Mobility 7&quot; tablet"/>
+    <entry model="PC728" name="Cherry Mobility 7&quot; Pro-Line tablet"/>
+    <entry model="PC906" name="Cherry Mobility 9.7&quot; Pro-Line tablet"/>
+    <entry model="PC1007" name="Cherry Mobility 10&quot; tablet"/>
+  </deviceMap>
+  
+  <startupActivities>
+    verify
+  </startupActivities>
+
+  <exitActivities>
+    kill-server
+  </exitActivities>
+
+  <menu title="Hoofdmenu">
+		<task title="Controleer of de verbinding werkt." progressCaption="verbindingscontrole">
+      <helpText>
+        Test of de tablet aangesloten is en herkend wordt. 
+        Zo niet, dan wordt aangeboden de ADB drivers te installeren als die beschikbaar zijn.
+      </helpText>
+      <activities>
+        verify
+      </activities>
+    </task>
+
+    <!--===============================================================================================-->
+
+    <menu title="Kies uw tablet en resolutie" returnToMainMenu="true" compatibleProductModels="PC677,PC1007">
+      <helpText>
+        Bevat opties om de resolutie (icoongrootte) 
+        en regio-instellingen aan te passen.
+      </helpText>
+      <require path="system" type="directory"/>
+
+      <query title="Huidige resolutie opvragen" command="getprop ro.sf.lcd_density">
+        <helpText>
+          Leest bij de tablet uit op welke resolutie 
+          (hoog of laag) die nu is ingesteld.
+        </helpText>
+        <processors>
+          <translate>
+            <item from="120">lage</item>
+            <item from="160">hoge</item>
+            <defaultText></defaultText>
+          </translate>
+          <outputIfEqual searchText="">
+            Het is niet gelukt de huidige resolutie vast te stellen.
+          </outputIfEqual>
+          <combine>
+            De tablet is op dit moment ingesteld op $$ resolutie.
+          </combine>
+        </processors>
+      </query>
+
+      <query title="Huidige regio-instelling opvragen" command="getprop persist.sys.country">
+        <helpText>
+          Leest bij de tablet uit op welke regio-instelling 
+          (Belgisch, Nederlands of anders) die nu is ingesteld.
+        </helpText>
+        <processors>
+          <outputIfEqual searchText="">
+            Het is niet gelukt de huidige regio-instelling vast te stellen.
+          </outputIfEqual>
+          <translate>
+            <item from="NL">Nederland</item>
+            <item from="BE">België</item>
+          </translate>
+          <combine>
+            De tablet heeft op dit moment de volgende regio-instelling: $$.
+          </combine>
+        </processors>
+      </query>
+
+      <task title="7&quot; tablet, lage resolutie (België)" progressCaption="instellen resolutie" compatibleProductModels="PC677">
+        <helpText>
+          Stelt het 7" tablet in op lage resolutie (grotere iconen),
+          met Belgische regio-instellingen.
+        </helpText>
+        <require path="system\build7-120.prop" type="file"/>
+        <activities>
+          remount
+          push system\build7-120.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+
+      <task title="7&quot; tablet, lage resolutie (Nederland)" progressCaption="instellen resolutie" compatibleProductModels="PC677">
+        <helpText>
+          Stelt het 7" tablet in op lage resolutie (grotere iconen),
+          met Nederlandse regio-instellingen.
+        </helpText>
+        <require path="system\build7-120NL.prop" type="file"/>
+        <activities>
+          remount
+          push system\build7-120NL.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+
+      <task title="7&quot; tablet, hoge resolutie (België)" progressCaption="instellen resolutie" compatibleProductModels="PC677">
+        <helpText>
+          Stelt het 7" tablet in op hoge resolutie (kleinere iconen),
+          met Belgische regio-instellingen.
+        </helpText>
+        <require path="system\build7-160.prop" type="file"/>
+        <activities>
+          remount
+          push system\build7-160.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+
+      <task title="7&quot; tablet, hoge resolutie (Nederland)" progressCaption="instellen resolutie" compatibleProductModels="PC677">
+        <helpText>
+          Stelt het 7" tablet in op hoge resolutie (kleinere iconen),
+          met Nederlandse regio-instellingen.
+        </helpText>
+        <require path="system\build7-160NL.prop" type="file"/>
+        <activities>
+          remount
+          push system\build7-160NL.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+
+      <task title="10&quot; tablet, lage resolutie (België)" progressCaption="instellen resolutie" compatibleProductModels="PC1007">
+        <helpText>
+          Stelt het 10" tablet in op lage resolutie (grotere iconen),
+          met Belgische regio-instellingen.
+        </helpText>
+        <require path="system\build10-120.prop" type="file"/>
+        <activities>
+          remount
+          push system\build10-120.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+      
+      <task title="10&quot; tablet, lage resolutie (Nederland)" progressCaption="instellen resolutie" compatibleProductModels="PC1007">
+        <helpText>
+          Stelt het 10" tablet in op lage resolutie (grotere iconen),
+          met Nederlandse regio-instellingen.
+        </helpText>
+        <require path="system\build10-120NL.prop" type="file"/>
+        <activities>
+          remount
+          push system\build10-120NL.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+      
+      <task title="10&quot; tablet, hoge resolutie (België)" progressCaption="instellen resolutie" compatibleProductModels="PC1007">
+        <helpText>
+          Stelt het 10" tablet in op hoge resolutie (kleinere iconen),
+          met Belgische regio-instellingen.
+        </helpText>
+        <require path="system\build10-160.prop" type="file"/>
+        <activities>
+          remount
+          push system\build10-160.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+      
+      <task title="10&quot; tablet, hoge resolutie (Nederland)" progressCaption="instellen resolutie" compatibleProductModels="PC1007">
+        <helpText>
+          Stelt het 10" tablet in op hoge resolutie (kleinere iconen),
+          met Nederlandse regio-instellingen.
+        </helpText>
+        <require path="system\build10-160NL.prop" type="file"/>
+        <activities>
+          remount
+          push system\build10-160NL.prop /system/build.prop
+          shell chmod 644 /system/build.prop
+        </activities>
+      </task>
+    </menu>
+
+    <!--===============================================================================================-->
+
+    <menu title="Den Eds update" compatibleProductModels="PC677,PC1007,PC728">
+      <helpText>
+        Bevat opties om te bepalen of uitvoeren van de Den Eds update 
+        geadviseerd is, en de mogelijkheid de update uit te voeren.
+      </helpText>
+      
+      <query title="Bepalen of de Den Eds update geadviseerd is" command="getprop ro.build.display.id">
+        <helpText>
+          Bepaalt of het geadviseerd is de Den Eds update
+          op de aangesloten tablet uit te voeren.
+          Als het advies is dat niet te doen, win dan advies in
+          op http://tabletsupport.eu/cherry voordat u besluit
+          de update toch uit te voeren!
+          Als de update reeds is uitgevoerd, dan hoeft dat 
+          sowieso niet nogmaals te worden gedaan.
+        </helpText>
+        <processors>
+          <translate>
+            <item from="97F2-D1-H1-H01-1655.20120308">wel</item>
+            <item from="01F2-D1-H1-H01-1744.20120309">wel</item>
+            <item from="PC728_RKS7S01_20120622">wel</item>
+            <item from="01F2-D1-H1-H01-1744.20120419">niet</item>
+            <item from="97F2-D1-H1-H01-1655.20121212">niet</item>
+            <item from="01F2-D1-H1-H01-1744.20121217">niet</item>
+            <item from="03F2-P1-H2-M01-1870.20121227">niet</item>
+            <defaultText></defaultText>
+          </translate>
+          <outputIfEqual searchText="">
+            De imageversie op de aangesloten tablet is onbekend.
+            Het advies is de Den Eds update NIET uit te voeren, en advies in te winnen op http://tabletsupport.eu/cherry.
+          </outputIfEqual>
+          <outputIfEqual searchText="niet">
+            Het advies is de Den Eds update op de aangesloten tablet NIET uit te voeren.
+          </outputIfEqual>
+          <combine>
+            Het advies is de Den Eds update op de aangesloten tablet $$ uit te voeren, mits dat niet al gedaan is. Als de update reeds is uitgevoerd, dan hoeft dat dus niet nogmaals te worden gedaan.
+          </combine>
+        </processors>
+      </query>
+      
+      <task title="Uitvoeren volledige Den Eds update" progressCaption="uitvoeren update" continueOnError="true">
+        <helpText>
+          Lost een groot aantal problemen op met het standaard Android 4.0.3 image.
+          LET OP: de tablet bij updaten niet gebruiken of uitschakelen!
+        </helpText>
+        <preMessage caption="Volledige Den Eds update" messageType="information" showButtons="yesNo">
+          Let u alstublieft op het volgende:
+          1. Het uitvoeren van de Den Eds update wordt niet aangeraden voor alle Cherry Mobility tablets. Gebruik de optie "Bepalen of de Den Eds update geadviseerd is" om vast te stellen of het uitvoeren voor uw tablet wel of niet geadviseerd is.
+          2. Gedurende het uitvoeren van de update moet de tablet niet worden gebruikt of uitgeschakeld. Foutmeldingen die op de tablet worden getoond kunnen worden genegeerd.
+          
+          Wilt u verder gaan met het uitvoeren van de update?
+        </preMessage>
+        <require path="bin\su" type="file"/>
+        <require path="apps" type="directory"/>
+        <require path="notifications" type="directory"/>
+        <require path="ringtones" type="directory"/>
+        <require path="alarms" type="directory"/>
+        <require path="ui" type="directory"/>
+        <require path="framework" type="directory"/>
+        <require path="lib" type="directory"/>
+        <require path="permissions" type="directory"/>
+        <require path="sysapp" type="directory"/>
+        <activities>
+          remount
+          shell mount -w -o remount,rw /dev/root /
+          push bin\su /system/bin
+          shell chmod 6755 /system/bin/su
+          push bin\su /system/xbin
+          shell chmod 6755 /system/xbin/su
+          shell rm /system/media/audio/alarms/*.ogg
+          shell rm /system/media/audio/ringtones/*.ogg
+          shell rm /system/media/audio/notifications/*.ogg
+          shell rm /system/media/audio/ui/*.ogg
+          shell rm /system/media/*.zip
+          shell rm /data/system/dropbox/*.*
+          shell rm /system/app/documents.apk
+          shell rm /system/app/free_bizhi.apk
+          shell rm /system/app/Galaxy4.apk
+          shell rm /system/app/Music.apk
+          shell rm /system/app/OpenWnn.apk
+          shell rm /system/app/PhaseBeam.apk
+          shell rm /system/app/PinyinIME.apk
+          shell rm /system/app/VoiceSearch.apk
+          shell rm /system/preinstall/*.apk
+          installdir apps *.apk
+          pushdir notifications *.ogg /system/media/audio/notifications
+          pushdir ringtones *.ogg /system/media/audio/ringtones
+          pushdir alarms *.ogg /system/media/audio/alarms
+          pushdir ui *.ogg /system/media/audio/ui
+          adapt framework com.google.android.maps.jar /system/framework
+          adapt framework com.google.android.media.effects.jar /system/framework
+          adapt framework com.google.widevine.software.drm.jar /system/framework
+          adapt framework framework-res.apk /system/framework
+          adapt lib libflint_engine_jni_api.so /system/lib
+          adapt lib libgcomm_jni.so /system/lib
+          adapt lib libpicowrapper.so /system/lib
+          adapt lib libspeexwrapper.so /system/lib
+          adapt lib libfrsdk.so /system/lib
+          adapt lib libvideochat_jni.so /system/lib
+          adapt lib libvideochat_stabilize.so /system/lib
+          adapt lib libvoicesearch.so /system/lib
+          adapt permissions android.hardware.location.gps.xml /system/etc/permissions
+          adapt permissions android.hardware.location.xml /system/etc/permissions
+          adapt permissions com.android.location.provider.xml /system/etc/permissions
+          adapt permissions com.google.android.maps.xml /system/etc/permissions
+          adapt permissions com.google.android.media.effects.xml /system/etc/permissions
+          adapt permissions com.google.widevine.software.drm.xml /system/etc/permissions
+          adapt permissions features.xml /system/etc/permissions
+          adapt permissions platform.xml /system/etc/permissions
+          adapt permissions tablet_core_hardware.xml /system/etc/permissions
+          adapt sysapp Calendar.apk /system/app
+          adapt sysapp CalendarProvider.apk /system/app
+          adapt sysapp Contacts.apk /system/app
+          adapt sysapp ContactsProvider.apk /system/app
+          adapt sysapp Gmail.apk /system/app
+          adapt sysapp GoogleBackupTransport.apk /system/app
+          adapt sysapp GoogleCalendarSyncAdapter.apk /system/app
+          adapt sysapp GoogleContactsSyncAdapter.apk /system/app
+          adapt sysapp GoogleFeedback.apk /system/app
+          adapt sysapp GoogleLoginService.apk /system/app
+          adapt sysapp GoogleMaps.apk /system/app
+          adapt sysapp GooglePartnerSetup.apk /system/app
+          adapt sysapp GoogleServicesFramework.apk /system/app
+          adapt sysapp MarketUpdater.apk /system/app
+          adapt sysapp MediaUploader.apk /system/app
+          adapt sysapp Music.apk /system/app
+          adapt sysapp NetworkLocation.apk /system/app
+          adapt sysapp PackageInstaller.apk /system/app
+          adapt sysapp Superuser.apk /system/app
+          adapt sysapp Street.apk /system/app
+          adapt sysapp Talk.apk /system/app
+          adapt sysapp Vending.apk /system/app
+          adapt sysapp VoiceSearch.apk /system/app
+          shell rm /data/dalvik-cache/*.dex
+          reboot
+        </activities>
+      </task>
+    </menu>
+
+    <!--===============================================================================================-->
+
+    <task title="7&quot; Pro-Line Play Store update" progressCaption="aanpassen Play Store bestanden" compatibleProductModels="PC728">
+      <helpText>
+        Maakt apps vindbaar in Play Store die met het standaard image niet gevonden kunnen worden.
+      </helpText>
+      <require path="pc728permissions" type="directory"/>
+      <activities>
+        remount
+        adaptdir pc728permissions *.xml /system/etc/permissions
+        shell rm /data/dalvik-cache/*.dex
+        reboot
+      </activities>
+    </task>
+
+    <menu title="Jelly Bean updates" compatibleProductModels="PC677,PC1007,PC906">
+      <helpText>
+        Bevat opties voor het oplossen van problemen na de installatie van een Jelly Bean firmware.
+      </helpText>
+      <task title="Tablet rooten" progressCaption="rooten tablet" compatibleProductModels="PC677,PC1007,PC906">
+        <helpText>
+          Stelt root-toegang beschikbaar op tablets met een Jelly Bean image.
+        </helpText>
+        <preMessage caption="Waarschuwing" showButtons="okCancel" messageType="warning">
+          Deze optie is alleen bedoeld voor tablets met een Jelly Bean image (Android versie 4.1 of hoger).
+          Het rooten van eerdere versies van Android is niet nodig, en kan tot problemen leiden met het gebruik van de tablet.
+          De installatie van SuperSU maakt onderdeel uit van deze optie.
+        </preMessage>
+        <require path="jbroot/su" type="file"/>
+        <require path="jbroot/busybox" type="file"/>
+        <activities>
+          shell mv /data/local/tmp /data/local/tmp.bak
+          shell ln -s /data /data/local/tmp
+          reboot
+          shell rm /data/local.prop > nul
+          shell "echo \"ro.kernel.qemu=1\" > /data/local.prop"
+          reboot
+          remount
+          push jbroot/su /system/bin/su
+          shell chown root.shell /system/bin/su
+          shell chmod 6755 /system/bin/su
+          push jbroot/busybox /system/bin/busybox
+          shell chown root.shell /system/bin/busybox
+          shell chmod 0755 /system/bin/busybox
+          push jbroot/SuperSU.apk /system/app/SuperSU.apk
+          shell chown root.root /system/app/SuperSU.apk
+          shell chmod 0644 /system/app/SuperSU.apk
+          push jbroot/RootExplorer.apk /system/app/RootExplorer.apk
+          shell chown root.root /system/app/RootExplorer.apk
+          shell chmod 0644 /system/app/RootExplorer.apk
+          shell rm /data/local.prop
+          shell rm /data/local/tmp
+          shell mv /data/local/tmp.bak /data/local/tmp
+          reboot
+        </activities>
+      </task>
+      <task title="Play Store en SD card write fix (7&quot;)" progressCaption="installeren fix voor Play Store en SD schrijftoegang" compatibleProductModels="PC677">
+        <helpText>
+          Lost de problemen op dat op tablets met een Jelly Bean firmware veel apps in 
+          Play Store niet gevonden kunnen worden en de SD kaart niet beschrijfbaar is.
+        </helpText>
+        <preMessage caption="Waarschuwing" messageType="warning" showButtons="okCancel">
+          Voordat deze fix geïnstalleerd kan worden dient de tablet geroot te zijn.
+          Na installatie van deze fix (en de reboot die daarvan onderdeel uitmaakt) moeten de volgende stappen worden uitgevoerd:
+          1. Ga naar Instellingen --> Apps --> Wordt uitgevoerd
+          2. Play Store aanklikken en klik op "Stoppen"
+          3. Scroll naar beneden en klik op "Alle gegevens wissen"
+          4. Play Store opnieuw starten
+        </preMessage>
+        <require path="jbplaysdfix" type="directory"/>
+        <activities>
+          remount
+          push jbplaysdfix/build.prop.pc677 /system/build.prop
+          push jbplaysdfix/android.hardware.camera.autofocus.xml /system/etc/permissions/android.hardware.camera.autofocus.xml
+          push jbplaysdfix/android.hardware.camera.flash-autofocus.xml /system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+          push jbplaysdfix/android.hardware.camera.front.xml /system/etc/permissions/android.hardware.camera.front.xml
+          push jbplaysdfix/android.hardware.camera.xml /system/etc/permissions/android.hardware.camera.xml
+          push jbplaysdfix/android.hardware.location.gps.xml /system/etc/permissions/android.hardware.location.gps.xml
+          push jbplaysdfix/android.hardware.location.xml /system/etc/permissions/android.hardware.location.xml
+          push jbplaysdfix/android.hardware.sensor.accelerometer.xml /system/etc/permissions/android.hardware.sensor.accelerometer.xml
+          push jbplaysdfix/android.hardware.touchscreen.multitouch.distinct.xml /system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+          push jbplaysdfix/android.hardware.touchscreen.xml /system/etc/permissions/android.hardware.touchscreen.xml
+          push jbplaysdfix/android.hardware.usb.accessory.xml /system/etc/permissions/android.hardware.usb.accessory.xml
+          push jbplaysdfix/android.software.live_wallpaper.xml /system/etc/permissions/android.software.live_wallpaper.xml
+          push jbplaysdfix/com.android.location.provider.xml /system/etc/permissions/com.android.location.provider.xml
+          push jbplaysdfix/platform.xml /system/etc/permissions/platform.xml
+          push jbplaysdfix/tablet_core_hardware.xml /system/etc/permissions/tablet_core_hardware.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.autofocus.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.front.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.location.gps.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.location.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.sensor.accelerometer.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.touchscreen.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.usb.accessory.xml
+          shell chmod 0644 /system/etc/permissions/android.software.live_wallpaper.xml
+          shell chmod 0644 /system/etc/permissions/com.android.location.provider.xml
+          shell chmod 0644 /system/etc/permissions/platform.xml
+          shell chmod 0644 /system/etc/permissions/tablet_core_hardware.xml
+          shell chmod 0644 /system/build.prop
+          reboot
+        </activities>
+      </task>
+      <task title="Play Store en SD card write fix (10&quot;)" progressCaption="installeren fix voor Play Store en SD schrijftoegang" compatibleProductModels="PC1007">
+        <helpText>
+          Lost de problemen op dat op tablets met een Jelly Bean firmware veel apps in
+          Play Store niet gevonden kunnen worden en de SD kaart niet beschrijfbaar is.
+        </helpText>
+        <preMessage caption="Waarschuwing" messageType="warning" showButtons="okCancel">
+          Voordat deze fix geïnstalleerd kan worden dient de tablet geroot te zijn.
+        </preMessage>
+        <require path="jbplaysdfix" type="directory"/>
+        <activities>
+          remount
+          push jbplaysdfix/build.prop.pc1007 /system/build.prop
+          push jbplaysdfix/android.hardware.camera.autofocus.xml /system/etc/permissions/android.hardware.camera.autofocus.xml
+          push jbplaysdfix/android.hardware.camera.flash-autofocus.xml /system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+          push jbplaysdfix/android.hardware.camera.front.xml /system/etc/permissions/android.hardware.camera.front.xml
+          push jbplaysdfix/android.hardware.camera.xml /system/etc/permissions/android.hardware.camera.xml
+          push jbplaysdfix/android.hardware.location.gps.xml /system/etc/permissions/android.hardware.location.gps.xml
+          push jbplaysdfix/android.hardware.location.xml /system/etc/permissions/android.hardware.location.xml
+          push jbplaysdfix/android.hardware.sensor.accelerometer.xml /system/etc/permissions/android.hardware.sensor.accelerometer.xml
+          push jbplaysdfix/android.hardware.touchscreen.multitouch.distinct.xml /system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+          push jbplaysdfix/android.hardware.touchscreen.xml /system/etc/permissions/android.hardware.touchscreen.xml
+          push jbplaysdfix/android.hardware.usb.accessory.xml /system/etc/permissions/android.hardware.usb.accessory.xml
+          push jbplaysdfix/android.software.live_wallpaper.xml /system/etc/permissions/android.software.live_wallpaper.xml
+          push jbplaysdfix/com.android.location.provider.xml /system/etc/permissions/com.android.location.provider.xml
+          push jbplaysdfix/platform.xml /system/etc/permissions/platform.xml
+          push jbplaysdfix/tablet_core_hardware.xml /system/etc/permissions/tablet_core_hardware.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.autofocus.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.front.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.location.gps.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.location.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.sensor.accelerometer.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.touchscreen.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.usb.accessory.xml
+          shell chmod 0644 /system/etc/permissions/android.software.live_wallpaper.xml
+          shell chmod 0644 /system/etc/permissions/com.android.location.provider.xml
+          shell chmod 0644 /system/etc/permissions/platform.xml
+          shell chmod 0644 /system/etc/permissions/tablet_core_hardware.xml
+          shell chmod 0644 /system/build.prop
+          reboot
+        </activities>
+        <postMessage caption="Afronding installatie" messageType="warning">
+          De volgende stappen moeten nu worden uitgevoerd om de installatie af te ronden:
+          1. Ga naar Instellingen --> Apps --> Wordt uitgevoerd
+          2. Play Store aanklikken en klik op "Stoppen"
+          3. Scroll naar beneden en klik op "Alle gegevens wissen"
+          4. Play Store opnieuw starten
+        </postMessage>
+      </task>
+      <task title="Play Store en SD card write fix (9.7&quot;)" progressCaption="installeren fix voor Play Store en SD schrijftoegang" compatibleProductModels="PC906">
+        <helpText>
+          Lost de problemen op dat op tablets met een Jelly Bean firmware veel apps in
+          Play Store niet gevonden kunnen worden en de SD kaart niet beschrijfbaar is.
+        </helpText>
+        <preMessage caption="Waarschuwing" messageType="warning" showButtons="okCancel">
+          Voordat deze fix geïnstalleerd kan worden dient de tablet geroot te zijn.
+        </preMessage>
+        <require path="jbplaysdfix" type="directory"/>
+        <activities>
+          remount
+          push jbplaysdfix/build.prop.pc906 /system/build.prop
+          push jbplaysdfix/android.hardware.camera.autofocus.xml /system/etc/permissions/android.hardware.camera.autofocus.xml
+          push jbplaysdfix/android.hardware.camera.flash-autofocus.xml /system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+          push jbplaysdfix/android.hardware.camera.front.xml /system/etc/permissions/android.hardware.camera.front.xml
+          push jbplaysdfix/android.hardware.camera.xml /system/etc/permissions/android.hardware.camera.xml
+          push jbplaysdfix/android.hardware.location.gps.xml /system/etc/permissions/android.hardware.location.gps.xml
+          push jbplaysdfix/android.hardware.location.xml /system/etc/permissions/android.hardware.location.xml
+          push jbplaysdfix/android.hardware.sensor.accelerometer.xml /system/etc/permissions/android.hardware.sensor.accelerometer.xml
+          push jbplaysdfix/android.hardware.touchscreen.multitouch.distinct.xml /system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+          push jbplaysdfix/android.hardware.touchscreen.xml /system/etc/permissions/android.hardware.touchscreen.xml
+          push jbplaysdfix/android.hardware.usb.accessory.xml /system/etc/permissions/android.hardware.usb.accessory.xml
+          push jbplaysdfix/android.software.live_wallpaper.xml /system/etc/permissions/android.software.live_wallpaper.xml
+          push jbplaysdfix/com.android.location.provider.xml /system/etc/permissions/com.android.location.provider.xml
+          push jbplaysdfix/platform.xml /system/etc/permissions/platform.xml
+          push jbplaysdfix/tablet_core_hardware.xml /system/etc/permissions/tablet_core_hardware.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.autofocus.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.flash-autofocus.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.front.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.camera.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.location.gps.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.location.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.sensor.accelerometer.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.touchscreen.xml
+          shell chmod 0644 /system/etc/permissions/android.hardware.usb.accessory.xml
+          shell chmod 0644 /system/etc/permissions/android.software.live_wallpaper.xml
+          shell chmod 0644 /system/etc/permissions/com.android.location.provider.xml
+          shell chmod 0644 /system/etc/permissions/platform.xml
+          shell chmod 0644 /system/etc/permissions/tablet_core_hardware.xml
+          shell chmod 0644 /system/build.prop
+          reboot
+        </activities>
+        <postMessage caption="Afronding installatie" messageType="warning">
+          De volgende stappen moeten nu worden uitgevoerd om de installatie af te ronden:
+          1. Ga naar Instellingen --> Apps --> Wordt uitgevoerd
+          2. Play Store aanklikken en klik op "Stoppen"
+          3. Scroll naar beneden en klik op "Alle gegevens wissen"
+          4. Play Store opnieuw starten
+        </postMessage>
+      </task>
+
+    </menu>
+    
+    <!--===============================================================================================-->
+    
+    <menu title="Telefoonservices uit/inschakelen" returnToMainMenu="true">
+      <helpText>
+        Bevat opties om de telefoonservices van de tablet uit of weer in te schakelen.
+      </helpText>
+      
+      <query title="Status telefoonservices opvragen" command="if [ -f /system/app/Provision.apk ]; then echo -n yes; fi; if [ -f /system/app/TelephonyProvider.apk ]; then echo -n yes; fi; if [ -f /system/app/Phone.apk ]; then echo -n yes; fi; echo">
+        <helpText>
+          Leest bij de tablet uit of de telefoonservices op 
+          dit moment zijn ingeschakeld of uitgeschakeld.
+        </helpText>
+        <processors>
+          <translate>
+            <item from="yesyesyes">ingeschakeld</item>
+            <item from="yesyes">partial</item>
+            <item from="yes">partial</item>
+            <item from="">uitgeschakeld</item>
+            <defaultText>unknown</defaultText>
+          </translate>
+          <outputIfEqual searchText="unknown">
+            De status van de telefoonservices kon niet worden vastgesteld.
+          </outputIfEqual>
+          <outputIfEqual searchText="partial">
+            De telefoonservices van de tablet zijn momenteel gedeeltelijk geïnstalleerd. Gebruik de overige opties in dit menu om de telefoonservices helemaal uit te schakelen, of helemaal in te schakelen.
+          </outputIfEqual>
+          <combine>
+            De telefoonservices van de tablet zijn op dit moment $$.
+          </combine>
+        </processors>
+      </query>
+      
+      <task title="Telefoonservices uitschakelen (minder energie verbuik)" progressCaption="uitschakelen telefoonservices">
+        <helpText>
+          Schakelt de telefoonservices van de tablet uit, zodat deze minder stroom gebruikt. 
+          Opmerking: dit geeft foutmeldingen in twee instellingschermen.
+        </helpText>
+        <activities>
+          verify
+          remount
+          shell if [ -f /system/app/Provision.apk ]; then mv /system/app/Provision.apk /system/app/!OLDProvision.apk.old; fi
+          shell if [ -f /system/app/TelephonyProvider.apk ]; then mv /system/app/TelephonyProvider.apk /system/app/!OLDTelephonyProvider.apk.old; fi
+          shell if [ -f /system/app/Phone.apk ]; then mv /system/app/Phone.apk /system/app/!OLDPhone.apk.old; fi
+          reboot
+        </activities>
+      </task>
+		  
+      <task title="Telefoonservices opnieuw inschakelen" progressCaption="inschakelen telefoonservices">
+        <helpText>
+          Schakelt de telefoonservices van de tablet weer in. 
+          Dit verwijdert de foutmeldingen in twee instellingschermen.
+        </helpText>
+        <activities>
+          verify
+          remount
+          shell if [ -f /system/app/!OLDProvision.apk.old ]; then mv /system/app/!OLDProvision.apk.old /system/app/Provision.apk; fi
+          shell if [ -f /system/app/!OLDTelephonyProvider.apk.old ]; then mv /system/app/!OLDTelephonyProvider.apk.old /system/app/TelephonyProvider.apk; fi
+          shell if [ -f /system/app/!OLDPhone.apk.old ]; then mv /system/app/!OLDPhone.apk.old /system/app/Phone.apk; fi
+          reboot
+        </activities>
+      </task>
+    </menu>
+
+    <!--===============================================================================================-->
+
+    <menu title="Bootanimatie veranderen" compatibleProductModels="PC677,PC1007,PC906">
+      <helpText>
+        Bevat opties om de bootanimatie die bij opstarten wordt getoond,
+        te vervangen of te verwijderen.
+      </helpText>
+			
+      <task title="Green Droid Animatie 1 voor 7&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC677">
+        <require path="animations7\greenandroid.zip" type="file"/>
+        <activities>
+          remount
+          push animations7\greenandroid.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+			
+      <task title="Green Droid Animatie 2 voor 7&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC677">
+        <require path="animations7\bootanimation.zip" type="file"/>
+        <activities>
+          remount
+          push animations7\bootanimation.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+			
+      <task title="ICS Boot Animatie voor 7&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC677">
+        <require path="animations7\bootanimationICS.zip" type="file"/>
+        <activities>
+          remount
+          push animations7\bootanimationICS.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+			
+      <task title="Cherry Mobility Animatie voor 7&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC677">
+        <require path="animations7\cherryanimation.zip" type="file"/>
+        <activities>
+          remount
+          push animations7\cherryanimation.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+			
+      <task title="Green Droid Animatie 2 voor 10&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC1007">
+        <require path="animations10\bootanimation.zip" type="file"/>
+        <activities>
+          remount
+          push animations10\bootanimation.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+			
+      <task title="ICS Boot Animatie voor 10&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC1007">
+        <require path="animations10\bootanimationICS.zip" type="file"/>
+        <activities>
+          remount
+          push animations10\bootanimationICS.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+			
+      <task title="Cherry Mobility Animatie voor 10&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC1007">
+        <require path="animations10\cherryanimation.zip" type="file"/>
+        <activities>
+          remount
+          push animations10\cherryanimation.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+
+      <task title="Android Destroys Apple Animatie voor 9.7&quot;" progressCaption="instellen boot animatie" compatibleProductModels="PC906">
+        <require path="animations97\bootanimationapple.zip" type="file"/>
+        <activities>
+          remount
+          push animations97\bootanimationapple.zip /system/media/bootanimation.zip
+        </activities>
+      </task>
+
+      <task title="Geen Animatie" progressCaption="uitschakelen boot animatie" compatibleProductModels="PC677,PC1007,PC906">
+        <helpText>Verwijdert de bootanimatie, waardoor de tekst ANDROID bij het opstarten op het scherm verschijnt.</helpText>
+        <activities>
+          remount
+          shell if [ -f /system/media/bootanimation.zip ]; then rm /system/media/bootanimation.zip; fi
+        </activities>
+      </task>
+		</menu>
+
+    <!--===============================================================================================-->
+    
+    <menu title="Toetsenbordindeling">
+      <helpText>
+        Bevat opties om de toetsenbordindeling van de tablet aan te laten sluiten op die van 
+        een gekocht hardware toetsenbord, zodat de juiste tekens verschijnen bij het aanslaan van toetsen.
+        Kijk goed naar de foto's in de map "keymaps" om te zien welke toetsenbordindeling te kiezen!
+      </helpText>
+      <preMessage caption="Toetsenbordindelingen" showOnce="true" messageType="warning">
+        Let erop dat toetsenborden van dezelfde leverancier (waaronder Kruidvat) een verschillende toetsenbordindeling kunnen hebben. Kijk daarom goed naar de foto's in de map "keymaps" om te zien welke toetsenbordindeling voor uw toetsenbord de juiste is!
+      </preMessage>
+      <require path="keymaps" type="directory"/>
+      
+      <query title="Geïnstalleerde toetsenbordindeling bepalen" command="cat /system/usr/keychars/Generic.kcm">
+        <helpText>
+          Bepaalt, indien mogelijk, welke toetsenbordindeling 
+          op dit moment op de tablet geïnstalleerd staat.
+        </helpText>
+        <processors>
+          <findLine searchText="#keyboardtype"/>
+          <substringAfter marker="keyboardtype="/>
+          <outputIfEqual searchText="">
+            De toetsenbordindeling die nu op de tablet geïnstalleerd staat is onbekend. U kunt met de andere opties in dit menu een toetsenbordindeling installeren die past bij uw toetsenbord.
+          </outputIfEqual>
+          <translate>
+            <item from="ebay">geïnstalleerd: eBay</item>
+            <item from="kruidvat1">geïnstalleerd: Kruidvat 1</item>
+            <item from="kruidvat2">geïnstalleerd: Kruidvat 2</item>
+            <item from="kruidvat3">geïnstalleerd: Kruidvat 3</item>
+            <item from="pckeyboard">geïnstalleerd: standaard PC</item>
+            <item from="standaardcherry">geïnstalleerd: oorspronkelijk</item>
+            <item from="KeyIdentification">geïnstalleerd: indeling voor het doen van onderzoek naar onbekende toetsenbordindeling. Gebruik deze indeling alleen als uw toetsenbordindeling nog niet bekend is en u wilt helpen bij het maken van een indelingsbestand voor uw toetsenbord. Anders, en na het doen van het onderzoek, kunt u met de overige opties in dit menu een beter passende toetsenbordindeling kiezen.</item>
+          </translate>
+          <outputIfEqual searchText="geïnstalleerd: oorspronkelijk">
+            Op dit moment staat de oorspronkelijke toetsenbordindeling op de tablet geïnstalleerd. U kunt met de andere opties in dit menu een toetsenbordindeling installeren die past bij uw toetsenbord.
+          </outputIfEqual>
+          <outputIfContains searchText="geïnstalleerd:">
+            Op dit moment staat de volgende toetsenbordindeling op de tablet $$.
+          </outputIfContains>
+          <combine>
+            De toetsenbordindeling die nu op de tablet geïnstalleerd staat is: $$. Hiervan is nog geen beschrijving bekend.
+          </combine>
+        </processors>
+      </query>
+      
+      <task title="Indeling eBay toetsenbord" progressCaption="installeren eBay keymap">
+        <helpText>
+          Installeert de (qwerty) toetsenbordindeling die wordt gebruikt 
+          op de meeste toetsenborden die via eBay besteld kunnen worden.
+        </helpText>
+        <require path="keymaps\ebay.kcm" type="file"/>
+        <activities>
+          remount
+          push keymaps\ebay.kcm /system/usr/keychars/Generic.kcm
+        </activities>
+      </task>
+      
+      <task title="Indeling Kruidvat toetsenbord 1" progressCaption="installeren Kruidvat keymap">
+        <helpText>
+          Installeert de (qwerty) toetsenbordindeling die wordt gebruikt
+          op een deel van de toetsenborden die door Kruidvat worden geleverd.
+        </helpText>
+        <require path="keymaps\kruidvat.kcm" type="file"/>
+        <activities>
+          remount
+          push keymaps\kruidvat.kcm /system/usr/keychars/Generic.kcm
+        </activities>
+      </task>
+      
+      <task title="Indeling Kruidvat toetsenbord 2" progressCaption="installeren Kruidvat 2 keymap">
+        <helpText>
+          Installeert de (qwerty) toetsenbordindeling die wordt gebruikt
+          op een deel van de toetsenborden die door Kruidvat worden geleverd.
+        </helpText>
+        <require path="keymaps\kruidvat2.kcm" type="file"/>
+        <activities>
+          remount
+          push keymaps\kruidvat2.kcm /system/usr/keychars/Generic.kcm
+        </activities>
+      </task>
+      
+      <task title="Indeling Kruidvat toetsenbord 3" progressCaption="installeren Kruidvat 3 keymap">
+        <helpText>
+          Installeert de (qwerty) toetsenbordindeling die wordt gebruikt
+          op een deel van de toetsenborden die door Kruidvat worden geleverd.
+        </helpText>
+        <require path="keymaps\kruidvat3.kcm" type="file"/>
+        <activities>
+          remount
+          push keymaps\kruidvat3.kcm /system/usr/keychars/Generic.kcm
+        </activities>
+      </task>
+      
+      <task title="Indeling standaard PC toetsenbord" progressCaption="installeren PC keymap">
+        <helpText>
+          Installeert de toetsenbordindeling die gebruikt 
+          wordt op standaard qwerty toetsenborden voor PCs.
+        </helpText>
+        <require path="keymaps\standaardpc.kcm" type="file"/>
+        <activities>
+          remount
+          push keymaps\standaardpc.kcm /system/usr/keychars/Generic.kcm
+        </activities>
+      </task>
+      
+      <task title="Oorsponkelijke toetsenbordindeling" progressCaption="installeren oorspronkelijke keymap">
+        <helpText>
+          Installeert de toetsenbordindeling die standaard
+          op de tablet geïnstalleerd staat.
+        </helpText>
+        <require path="keymaps\Generic.kcm" type="file"/>
+        <activities>
+          remount
+          push keymaps\Generic.kcm /system/usr/keychars/Generic.kcm
+        </activities>
+      </task>
+
+      <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
+
+      <menu title="Ontwikkelhulpmiddelen">
+        <helpText>
+          Bevat opties om het maken van nieuwe toetsenbordindelingen te ondersteunen.
+        </helpText>
+
+        <task title="Onderzoek indeling toetsenbord" progressCaption="installeren onderzoeksindeling">
+          <helpText>
+            Installeert een toetsenbordindeling die dient als hulpmiddel voor het 
+            maken van een toetsenbordindeling voor een nog onbekend toetsenbord.            
+          </helpText>
+          <preMessage caption="Bevestig installatie" messageType="question" showButtons="yesNo">
+            Met deze toetsenbordindeling worden de speciale toetsen op het toetsenbord geïdentificeerd.
+            
+            De meeste toetsen worden na installatie van deze indeling uitgeschakeld. De gebruiker moet voor elke toets die nog wel werkt noteren welke symbool de toets produceert en welke symbolen er op het scherm hadden moeten verschijnen bij het aanslaan van de toets, al of niet in combinatie met shift, alt, ctrl, capslock, numlock, en combinaties daarvan.
+            
+            Waarschuwing: na gebruik zult u een andere indeling willen installeren!
+            
+            Weet u zeker dat u deze toetsenbordindeling wilt installeren?
+          </preMessage>
+          <require path="keymaps\KeyIdentification.kcm" type="file"/>
+          <activities>
+            remount
+            push keymaps\KeyIdentification.kcm /system/usr/keychars/Generic.kcm
+          </activities>
+        </task>
+
+      </menu>
+
+      <!--=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-->
+
+    </menu>
+
+    <!--===============================================================================================-->
+
+    <menu title="CWM Recovery">
+      <helpText>
+        Bevat opties om ClockworkMod (CWM) Recovery te installeren en activeren. 
+        Met CWM kunnen backups, recoveries en andere systeemtaken worden uitgevoerd.
+      </helpText>
+			
+      <task title="ClockworkMod Recovery 5 voor ICS installeren" progressCaption="installeren CWM">
+        <require path="cwm\recovery.img" type="file"/>
+        <activities>
+          push cwm\recovery.img /data/
+          shell cat /data/recovery.img > /dev/block/nandg; sync
+        </activities>
+      </task>
+			
+      <task title="Herstarten in CWM Recovery Mode" progressCaption="herstarten in CWM Recovery Mode">
+        <activities>
+          shell echo -n boot-recovery | busybox dd of=/dev/block/nandf count=1 conv=sync; sync; reboot
+        </activities>
+      </task>
+		</menu>
+
+    <!--===============================================================================================-->
+
+    <menu title="Overige updates">
+      <helpText>
+        Bevat diverse kleine opvragingen en updates.
+      </helpText>
+      
+      <query title="IMEI uitlezen" command="cat /data/misc/radio/imei.conf" offerClipboardCopy="true">
+        <helpText>
+          Leest de IMEI uit van de tablet. Dit is een code die voor elk tablet uniek
+          is en daarom van belang kan zijn voor, bijvoorbeeld, reparatieverzoeken.
+        </helpText>
+        <processors>
+          <findLine searchText="IMEI"/>
+          <substringAfter marker="IMEI="/>
+          <outputIfEqual searchText="">
+            Het is niet gelukt de IMEI uit te lezen.
+          </outputIfEqual>
+          <combine>
+            De IMEI van de tablet is: $$.
+          </combine>
+        </processors>
+      </query>
+      
+      <query title="Bepalen &quot;root&quot; status" command="if [ -f /system/bin/su ]; then echo -n yes; fi; if [ -f /system/xbin/su ]; then echo -n yes; fi; echo">
+        <helpText>
+          Bepaalt of de tablet voorzien is van de mogelijkheid om programma's met "root rechten" 
+          uit te voeren. Bepaalde apps hebben dit nodig om (volledig) te kunnen werken.
+        </helpText>
+        <processors>
+          <translate>
+            <item from="">
+              De tablet is niet voorzien van de mogelijkheid om programma's met "root rechten" uit te voeren.
+              U kunt deze voorziening toevoegen met de optie Tablet "rooten".
+            </item>
+            <item from="yes">
+              De tablet is gedeeltelijk voorzien van de mogelijkheid om programma's met "root rechten" uit te voeren.
+              U kunt deze voorziening compleet maken met de optie Tablet "rooten".
+            </item>
+            <item from="yesyes">
+              De tablet is al voorzien van de mogelijkheid om programma's met "root rechten" uit te voeren.              
+            </item>
+            <defaultText>
+              Het is niet gelukt om vast te stellen of de tablet voorzien is van de mogelijkheid om programma's met "root rechten" uit te voeren.
+            </defaultText>
+          </translate>
+        </processors>
+      </query>
+      
+      <task title="Tablet &quot;rooten&quot;" progressCaption="rooten tablet" continueOnError="true">
+        <helpText>
+          Voorziet de tablet van een mogelijkheid om programma's met "root rechten" uit
+          te voeren. Bepaalde apps hebben dit nodig om (volledig) te kunnen werken.
+        </helpText>
+        <require path="bin\su" type="file"/>
+        <activities>
+          remount
+          push bin\su /system/bin
+          shell chmod 6755 /system/bin/su
+          push bin\su /system/xbin
+          shell chmod 6755 /system/xbin/su
+        </activities>
+      </task>
+
+      <task title="Beschrijfbaar maken SDCard/USB" progressCaption="beschrijfbaar maken">
+        <helpText>
+          Zorgt ervoor dat programma's op de tablet kunnen schrijven naar 
+          SDCards en USB sticks die in de tablet worden gestoken.
+        </helpText>
+        <require path="permissions\platform.xml" type="file"/>
+        <activities>
+          remount
+          adapt permissions platform.xml /system/etc/permissions
+          reboot
+        </activities>
+      </task>
+    </menu>
+  </menu>
+</commands>

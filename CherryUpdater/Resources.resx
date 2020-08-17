@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CptActivityFailed" xml:space="preserve">
+    <value>Updatefout</value>
+  </data>
+  <data name="CptConfigurationDialog" xml:space="preserve">
+    <value>Instellingen</value>
+  </data>
+  <data name="CptConfirmAbortQuestion" xml:space="preserve">
+    <value>Bevestig afbreken</value>
+  </data>
+  <data name="CptConnectionError" xml:space="preserve">
+    <value>Verbindingsfout</value>
+  </data>
+  <data name="CptDriverInstallationFinished" xml:space="preserve">
+    <value>Installatieprogramma beëindigd</value>
+  </data>
+  <data name="CptEnvironmentNotSane" xml:space="preserve">
+    <value>Kan CherryUpdater niet starten</value>
+  </data>
+  <data name="CptUnhandledProgramError" xml:space="preserve">
+    <value>Kritieke programmafout</value>
+  </data>
+  <data name="LblAbortButton" xml:space="preserve">
+    <value>&amp;Afbreken</value>
+  </data>
+  <data name="LblActivityAdapChangePermissionsFinished" xml:space="preserve">
+    <value>Aanpassen permissies afgerond</value>
+  </data>
+  <data name="LblActivityAdaptChangePermission" xml:space="preserve">
+    <value>Aanpassen permissie van bestand {0}...</value>
+  </data>
+  <data name="LblActivityInstallFinished" xml:space="preserve">
+    <value>Installeren afgerond</value>
+  </data>
+  <data name="LblActivityInstallPackage" xml:space="preserve">
+    <value>Installeren van pakket {0}...</value>
+  </data>
+  <data name="LblActivityPushFile" xml:space="preserve">
+    <value>Plaatsen van bestand {0}...</value>
+  </data>
+  <data name="LblActivityPushFiles" xml:space="preserve">
+    <value>Plaatsen van bestanden...</value>
+  </data>
+  <data name="LblActivityPushFinished" xml:space="preserve">
+    <value>Plaatsen afgerond</value>
+  </data>
+  <data name="LblBackButton" xml:space="preserve">
+    <value>&amp;Terug</value>
+  </data>
+  <data name="LblCancelButton" xml:space="preserve">
+    <value>&amp;Annuleren</value>
+  </data>
+  <data name="LblClickToStart" xml:space="preserve">
+    <value>Druk op Start om te beginnen</value>
+  </data>
+  <data name="LblCloseButton" xml:space="preserve">
+    <value>S&amp;luiten</value>
+  </data>
+  <data name="LblEnableLogging" xml:space="preserve">
+    <value>Logbestand maken:</value>
+  </data>
+  <data name="LblExecutionNotSuccessful" xml:space="preserve">
+    <value>Uitvoering beeindigd.</value>
+  </data>
+  <data name="LblExecutionSuccessful" xml:space="preserve">
+    <value>Uitvoering succesvol afgerond.</value>
+  </data>
+  <data name="LblIgnoreProductModel" xml:space="preserve">
+    <value>Negeer producttype</value>
+  </data>
+  <data name="LblLogGroupBox" xml:space="preserve">
+    <value>Log</value>
+  </data>
+  <data name="LblLogLevelError" xml:space="preserve">
+    <value>foutmeldingen</value>
+  </data>
+  <data name="LblLogLevelVerbose" xml:space="preserve">
+    <value>uitgebreid</value>
+  </data>
+  <data name="LblLogLevelWarn" xml:space="preserve">
+    <value>waarschuwingen</value>
+  </data>
+  <data name="LblMenuButton" xml:space="preserve">
+    <value>Naar menu</value>
+  </data>
+  <data name="LblOkButton" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="LblRebootFinished" xml:space="preserve">
+    <value>Reboot van tablet afgerond</value>
+  </data>
+  <data name="LblShowHelp" xml:space="preserve">
+    <value>Toon ballonnen met helptekst</value>
+  </data>
+  <data name="LblSplashCredits1" xml:space="preserve">
+    <value>Mogelijk dankzij het werk van diverse forumleden</value>
+  </data>
+  <data name="LblSplashCredits2" xml:space="preserve">
+    <value>Contains a modified version of MAD Bee by camalot</value>
+  </data>
+  <data name="LblSplashDisclaimer" xml:space="preserve">
+    <value>Gebruik geheel op eigen risico!</value>
+  </data>
+  <data name="LblSplashInitializing" xml:space="preserve">
+    <value>Bezig met initialiseren ADB...</value>
+  </data>
+  <data name="LblSplashVersion" xml:space="preserve">
+    <value>Versie {0}</value>
+  </data>
+  <data name="LblStartButton" xml:space="preserve">
+    <value>&amp;Start</value>
+  </data>
+  <data name="LblStatusGroupBox" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="LblStatusMoreDevices" xml:space="preserve">
+    <value>Meerdere apparaten verbonden</value>
+  </data>
+  <data name="LblStatusNoDevices" xml:space="preserve">
+    <value>Geen apparaat verbonden</value>
+  </data>
+  <data name="LblStatusOneDevice" xml:space="preserve">
+    <value>Verbonden apparaat: {0}</value>
+  </data>
+  <data name="LblStatusOneDeviceNotOnline" xml:space="preserve">
+    <value>Verbonden apparaat: {0} (niet online)</value>
+  </data>
+  <data name="LblStatusUnknownModel" xml:space="preserve">
+    <value>type onbekend</value>
+  </data>
+  <data name="LblTaskButton" xml:space="preserve">
+    <value>Uitvoeren</value>
+  </data>
+  <data name="LblTaskExecution" xml:space="preserve">
+    <value>Bezig met {0}...</value>
+  </data>
+  <data name="LblWaitForReboot" xml:space="preserve">
+    <value>Wacht op reboot van het tablet...</value>
+  </data>
+  <data name="MnuAbout" xml:space="preserve">
+    <value>In&amp;fo</value>
+  </data>
+  <data name="MnuConfiguration" xml:space="preserve">
+    <value>&amp;Instellingen</value>
+  </data>
+  <data name="MsgActivityAdaptChangePermissions" xml:space="preserve">
+    <value>Aanpassen permissies</value>
+  </data>
+  <data name="MsgActivityAdaptPushFile" xml:space="preserve">
+    <value>Plaatsen bestand</value>
+  </data>
+  <data name="MsgActivityAdaptPushFiles" xml:space="preserve">
+    <value>Plaatsen bestanden</value>
+  </data>
+  <data name="MsgActivityCompletedFailure" xml:space="preserve">
+    <value>* Stap mislukt: {0}</value>
+  </data>
+  <data name="MsgActivityCompletedSuccess" xml:space="preserve">
+    <value>* Stap geslaagd</value>
+  </data>
+  <data name="MsgActivityExceptionOccured" xml:space="preserve">
+    <value>De technische fout is van type {0} met boodschap: {1}
+</value>
+  </data>
+  <data name="MsgActivityFailed" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het uitvoeren van de update.</value>
+  </data>
+  <data name="MsgActivitySkipped" xml:space="preserve">
+    <value>* Stap {0} van {1} overgeslagen: onjuist aantal parameters ({3}) voor opdracht {2}.
+Opdrachtregel: {4}</value>
+  </data>
+  <data name="MsgActivityStart" xml:space="preserve">
+    <value>* Stap {0} van {1}: {2}</value>
+  </data>
+  <data name="MsgActivityStartAdapt" xml:space="preserve">
+    <value>vervangen bestand {1}\{2}</value>
+  </data>
+  <data name="MsgActivityStartAdaptdir" xml:space="preserve">
+    <value>vervangen bestanden {1}\{2}</value>
+  </data>
+  <data name="MsgActivityStartInstall" xml:space="preserve">
+    <value>installeren pakket {1}</value>
+  </data>
+  <data name="MsgActivityStartInstalldir" xml:space="preserve">
+    <value>installeren pakketten {1}\{2}</value>
+  </data>
+  <data name="MsgActivityStartPush" xml:space="preserve">
+    <value>plaatsen bestand {1}</value>
+  </data>
+  <data name="MsgActivityStartPushdir" xml:space="preserve">
+    <value>plaatsen bestanden {1}\{2}</value>
+  </data>
+  <data name="MsgActivityStartReboot" xml:space="preserve">
+    <value>herstarten tablet</value>
+  </data>
+  <data name="MsgActivityStartRemount" xml:space="preserve">
+    <value>herkoppelen bestandssysteem</value>
+  </data>
+  <data name="MsgActivityStartShell" xml:space="preserve">
+    <value>uitvoeren commando '{0}'</value>
+  </data>
+  <data name="MsgActivityStartUnknown" xml:space="preserve">
+    <value>uitvoeren opdracht</value>
+  </data>
+  <data name="MsgActivityStartVerify" xml:space="preserve">
+    <value>controleren verbinding</value>
+  </data>
+  <data name="MsgADBNotFound" xml:space="preserve">
+    <value>het ADB programma ("{0}") bestaat niet</value>
+  </data>
+  <data name="MsgCannotRun" xml:space="preserve">
+    <value>Kan het ADB programma niet draaien. Verzeker u ervan dat het ZIP-bestand met dit programma volledig is uitgepakt.</value>
+  </data>
+  <data name="MsgCommandsFileNotFound" xml:space="preserve">
+    <value>het configuratiebestand ("{0}") bestaat niet</value>
+  </data>
+  <data name="MsgConfirmAbortQuestion" xml:space="preserve">
+    <value>Weet u zeker dat u wilt afbreken?</value>
+  </data>
+  <data name="MsgDetailErrorLogException" xml:space="preserve">
+    <value>Daar bovenop is er een fout van type {0} opgetreden bij het wegschrijven van de foutbeschrijving, met boodschap: {1}
+Merk dit alstublieft op bij het melden van de fout.</value>
+  </data>
+  <data name="MsgDetailErrorLogWritten" xml:space="preserve">
+    <value>Er is een gedetailleerde foutbeschrijving weggeschreven in het volgende bestand: {0}.
+Stuur deze alstublieft mee bij het melden van de fout.</value>
+  </data>
+  <data name="MsgDriverInstallationFinished" xml:space="preserve">
+    <value>Het installatieprogramma van de ADB drivers is afgerond. Wilt u de verbinding nogmaals testen?</value>
+  </data>
+  <data name="MsgEnvironmentNotSane" xml:space="preserve">
+    <value>CherryUpdater kan niet starten om de volgende reden: {0}. Herstel het probleem en start CherryUpdater opnieuw.</value>
+  </data>
+  <data name="MsgFatalErrorOccured" xml:space="preserve">
+    <value>Het spijt me, het lijkt erop dat er een kritieke fout is opgetreden in CherryUpdater.
+Er is een niet afgehandelde fout opgetreden van type {0}, met boodschap: {1}
+</value>
+  </data>
+  <data name="MsgInstallDriverQuestion" xml:space="preserve">
+    <value>Wilt u de ADB drivers nu installeren?</value>
+  </data>
+  <data name="MsgInvalidState" xml:space="preserve">
+    <value>Het gekoppelde Android apparaat is niet in de juiste modus. Deze kan bijvoorbeeld in recoverymodus gestart zijn.</value>
+  </data>
+  <data name="MsgMoreDevices" xml:space="preserve">
+    <value>Er is meer dan één Android apparaat gevonden. Zorg ervoor dat maar één Cherry tablet op de PC is aangesloten.</value>
+  </data>
+  <data name="MsgNoDevices" xml:space="preserve">
+    <value>Er is geen Android apparaat gevonden. Verzeker u ervan dat:
+- de ADB drivers geïnstalleerd zijn 
+- het tablet met de USB kabel is aangesloten op de PC 
+- het tablet in USB debug modus staat
+- een geïnstalleerde firewall netwerkcommunicatie tussen CherryUpdater en adb.exe (TCP poort 5037) niet blokkeert</value>
+  </data>
+  <data name="MsgNoRoot" xml:space="preserve">
+    <value>Op het gekoppelde Android apparaat kunnen geen wijzigingen worden doorgevoerd. Waarschijnlijk is een ander apparaat dan een Cherry tablet aangesloten.</value>
+  </data>
+  <data name="MsgSyncResultConnectionError" xml:space="preserve">
+    <value>Er is een verbindingsfout opgetreden met het tablet.</value>
+  </data>
+  <data name="MsgSyncResultFileReadError" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het lezen van het bestand.</value>
+  </data>
+  <data name="MsgSyncResultFileWriteError" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het schrijven van het bestand.</value>
+  </data>
+  <data name="MsgSyncResultLocalIsDirectory" xml:space="preserve">
+    <value>Het lokale pad wijst naar een directory/map.</value>
+  </data>
+  <data name="MsgSyncResultNoDirTarget" xml:space="preserve">
+    <value>De doeldirectory/map bestaat niet.</value>
+  </data>
+  <data name="MsgSyncResultNoLocalFile" xml:space="preserve">
+    <value>Het te plaatsen bestand bestaat niet.</value>
+  </data>
+  <data name="MsgSyncResultNoRemoteObject" xml:space="preserve">
+    <value>Het object op het tablet bestaat niet.</value>
+  </data>
+  <data name="MsgSyncResultRemoteIsFile" xml:space="preserve">
+    <value>Het pad op het tablet wijst naar een bestand.</value>
+  </data>
+  <data name="MsgSyncResultRemotePathEncoding" xml:space="preserve">
+    <value>De tekenset wordt niet ondersteund voor het pad op het tablet.</value>
+  </data>
+  <data name="MsgSyncResultRemotePathLength" xml:space="preserve">
+    <value>Het pad op het tablet is te lang.</value>
+  </data>
+  <data name="MsgSyncResultTargetIsFile" xml:space="preserve">
+    <value>Het doelpad wijst naar een bestand.</value>
+  </data>
+  <data name="MsgSyncResultUnknownError" xml:space="preserve">
+    <value>Er is een onbekende fout opgetreden.</value>
+  </data>
+  <data name="MsgVerifyFailed" xml:space="preserve">
+    <value>Er kon geen werkende verbinding met het Cherry tablet worden opgezet.</value>
+  </data>
+  <data name="TxtActivityException" xml:space="preserve">
+    <value>Uitzondering bij uitvoeren activiteit, type {0}: {1}</value>
+  </data>
+  <data name="TxtExceptionData" xml:space="preserve">
+    <value>  Uitzonderingsgegevens:</value>
+  </data>
+  <data name="TxtInnerException" xml:space="preserve">
+    <value>  Bevat uitzondering: {0}</value>
+  </data>
+  <data name="TxtStackTrace" xml:space="preserve">
+    <value>  Stack trace: {0}</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="XsdCommandFile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\CommandFile.xsd;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="CptIncompatibleProductModel" xml:space="preserve">
+    <value>Apparaattype niet herkend</value>
+  </data>
+  <data name="MsgIncompatibleProductModel" xml:space="preserve">
+    <value>Het type van het verbonden Android apparaat wordt niet herkend door CherryUpdater. Als het apparaat niet van een ondersteund type is en updates toch worden toegepast, dan kan dit problemen veroorzaken in de werking van het apparaat.</value>
+  </data>
+  <data name="LblStatusUnknown" xml:space="preserve">
+    <value>Geen apparaatgegevens beschikbaar</value>
+  </data>
+  <data name="MsgAdbError" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het uitvoeren van het ADB programma. Verzeker u ervan dat er een juiste, werkende versie van het ADB programma beschikbaar is.</value>
+  </data>
+  <data name="LblUseAdbProvider" xml:space="preserve">
+    <value>Gebruik adb.exe voor uitvoeren opdrachten</value>
+  </data>
+  <data name="MsgActivityStartKillServer" xml:space="preserve">
+    <value>stoppen ADB serverproces</value>
+  </data>
+  <data name="MsgCantLoadDirectoryFiles" xml:space="preserve">
+    <value>Kan de bestanden binnen de map niet opvragen</value>
+  </data>
+  <data name="LblStatusApplyingSettings" xml:space="preserve">
+    <value>Bezig met toepassen van instellingen. Dit kan enkele seconden duren...</value>
+  </data>
+  <data name="CptQueryCompleted" xml:space="preserve">
+    <value>Resultaat opvraging</value>
+  </data>
+  <data name="CptQueryFailed" xml:space="preserve">
+    <value>Opvraagfout</value>
+  </data>
+  <data name="LblQueryButton" xml:space="preserve">
+    <value>Opvragen</value>
+  </data>
+  <data name="MsgQueryFailed" xml:space="preserve">
+    <value>Er is een fout opgetreden bij het opvragen.</value>
+  </data>
+  <data name="MsgQueryOfferClipboardCopy" xml:space="preserve">
+    <value>{0}
+
+Wilt u dit resultaat op het klembord zetten?</value>
+  </data>
+  <data name="TxtUnhandledException" xml:space="preserve">
+    <value>Niet-verwerkte uitzondering {0}: {1}</value>
+  </data>
+  <data name="CptCreditsNameList" xml:space="preserve">
+    <value>Mede mogelijk gemaakt door...</value>
+  </data>
+  <data name="MsgCreditsNameList" xml:space="preserve">
+    <value>CherryUpdater had niet tot stand kunnen komen zonder het fundament, de inspiratie, de bijdragen, het meedenken en het testen van ChemoNL, Den Eds, Gerard, JoJo, josgp, Lessram, visseronline en alle anderen die ik hier vergeten ben te noemen.</value>
+  </data>
+</root>

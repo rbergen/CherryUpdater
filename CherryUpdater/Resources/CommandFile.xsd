@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"     
+	targetNamespace="http://schema.vanbergen.local/Tools/CherryUpdater/CommandFile"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    xmlns="http://schema.vanbergen.local/Tools/CherryUpdater/CommandFile"
+    xmlns:dbda="http://schema.vanbergen.local/Tools/CherryUpdater/CommandFile"
+>
+  <xs:simpleType name="requirePathType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="file"/>
+      <xs:enumeration value="directory"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:complexType name="searchTextType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="searchText" type="xs:string" use="required"/>
+        <xs:attribute name="ignoreCase" type="xs:boolean" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="menuItemType">
+    <xs:sequence>
+      <xs:element ref="helpText" minOccurs="0"/>
+      <xs:element name="preMessage" minOccurs="0">
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:string">
+              <xs:attribute name="caption" type="xs:string" use="required"/>
+              <xs:attribute name="showOnce" type="xs:boolean" use="optional"/>
+              <xs:attribute name="showButtons" use="optional">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="ok"/>
+                    <xs:enumeration value="okCancel"/>
+                    <xs:enumeration value="yesNo"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+              <xs:attribute name="messageType" use="optional">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="neutral"/>
+                    <xs:enumeration value="information"/>
+                    <xs:enumeration value="question"/>
+                    <xs:enumeration value="warning"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="title" type="xs:string" use="required"/>
+    <xs:attribute name="compatibleProductModels" type="xs:string" use="optional"/>
+  </xs:complexType>
+  <xs:element name="deviceMap">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entry" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="model" type="xs:string" use="required"/>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="require">
+    <xs:complexType>
+      <xs:attribute name="path" type="xs:string" use="required"/>
+      <xs:attribute name="type" type="requirePathType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="combine" type="xs:string"/>
+  <xs:element name="findLine">
+    <xs:complexType>
+      <xs:attribute name="searchText" type="xs:string" use="required"/>
+      <xs:attribute name="ignoreCase" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="outputIfContains" type="searchTextType"/>
+  <xs:element name="outputIfEqual" type="searchTextType"/>
+  <xs:element name="substringAfter">
+    <xs:complexType>
+      <xs:attribute name="marker" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="translate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="item" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="from" type="xs:string" use="required"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="defaultText" type="xs:string" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="helpText" type="xs:string" />
+  <xs:element name="task">
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="menuItemType">
+          <xs:sequence>
+            <xs:element ref="require" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:element name="activities" type="xs:string"/>
+            <xs:element name="postMessage" minOccurs="0">
+              <xs:complexType>
+                <xs:simpleContent>
+                  <xs:extension base="xs:string">
+                    <xs:attribute name="caption" type="xs:string" use="required"/>
+                    <xs:attribute name="messageType" use="optional">
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="neutral"/>
+                          <xs:enumeration value="information"/>
+                          <xs:enumeration value="warning"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="showIfFailed" type="xs:boolean" use="optional"/>
+                  </xs:extension>
+                </xs:simpleContent>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+          <xs:attribute name="progressCaption" type="xs:string" use="required"/>
+          <xs:attribute name="continueOnError" type="xs:boolean" use="optional"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="query">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="helpText" minOccurs="0"/>
+        <xs:element name="processors" minOccurs="0">
+          <xs:complexType>
+            <xs:choice maxOccurs="unbounded">
+              <xs:element ref="combine" maxOccurs="unbounded"/>
+              <xs:element ref="findLine" maxOccurs="unbounded"/>
+              <xs:element ref="outputIfContains" maxOccurs="unbounded"/>
+              <xs:element ref="outputIfEqual" maxOccurs="unbounded"/>
+              <xs:element ref="substringAfter" maxOccurs="unbounded"/>
+              <xs:element ref="translate" maxOccurs="unbounded"/>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="title" type="xs:string" use="required"/>
+      <xs:attribute name="command" type="xs:string" use="required"/>
+      <xs:attribute name="compatibleProductModels" type="xs:string" use="optional"/>
+      <xs:attribute name="offerClipboardCopy" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="startupActivities" type="xs:string"/>
+	<xs:element name="exitActivities" type="xs:string"/>
+	<xs:element name="menu">
+		<xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="menuItemType">
+          <xs:sequence>
+            <xs:element ref="require" minOccurs="0" maxOccurs="unbounded"/>
+            <xs:choice maxOccurs="unbounded">
+              <xs:element ref="menu" maxOccurs="unbounded"/>
+              <xs:element ref="query" maxOccurs="unbounded"/>
+              <xs:element ref="task" maxOccurs="unbounded"/>
+            </xs:choice>
+          </xs:sequence>
+          <xs:attribute name="returnToMainMenu" type="xs:boolean" use="optional"/>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+	</xs:element>
+	<xs:element name="commands">
+		<xs:complexType>
+			<xs:sequence>
+        <xs:element minOccurs="0" ref="deviceMap"/>
+				<xs:element minOccurs="0" ref="startupActivities"/>
+				<xs:element minOccurs="0" ref="exitActivities"/>
+				<xs:element ref="menu"/>
+			</xs:sequence>
+      <xs:attribute name="compatibleProductModels" type="xs:string" use="optional"/>
+    </xs:complexType>
+	</xs:element>
+</xs:schema>

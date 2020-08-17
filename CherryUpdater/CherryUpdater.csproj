@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FDF34045-B055-4DA9-8A04-9650B75D7EA7}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CherryUpdater</RootNamespace>
+    <AssemblyName>CherryUpdater</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>cherry.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActivityHandlers\ActivityExecutor.cs" />
+    <Compile Include="ActivityHandlers\QueryResult.cs" />
+    <Compile Include="ADBLogger.cs" />
+    <Compile Include="ActivityHandlers\AdbExeActivityProvider.cs" />
+    <Compile Include="ActivityHandlers\ADBState.cs" />
+    <Compile Include="Commands\CombineProcessor.cs" />
+    <Compile Include="Commands\IDeviceNameProvider.cs" />
+    <Compile Include="Commands\OutputIfProcessor.cs" />
+    <Compile Include="Commands\SeachTextProcessor.cs" />
+    <Compile Include="Commands\FindLineProcessor.cs" />
+    <Compile Include="Commands\Query.cs" />
+    <Compile Include="Commands\TranslateProcessor.cs" />
+    <Compile Include="Commands\OutputIfEqualProcessor.cs" />
+    <Compile Include="Commands\IProcessor.cs" />
+    <Compile Include="Commands\OutputIfContainsProcessor.cs" />
+    <Compile Include="Commands\Requirement.cs" />
+    <Compile Include="Commands\SubstringAfterProcessor.cs" />
+    <Compile Include="Commands\TextParser.cs" />
+    <Compile Include="Commands\Commands.cs" />
+    <Compile Include="Commands\DecoratedMessage.cs" />
+    <Compile Include="Controls\FadeLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigurationDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\ConfigurationDialog.Designer.cs">
+      <DependentUpon>ConfigurationDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SplashDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SplashDialog.Designer.cs">
+      <DependentUpon>SplashDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Events\ActivityProgressUpdatedEventArgs.cs" />
+    <Compile Include="Events\ActivityFailedEventArgs.cs" />
+    <Compile Include="Events\ActivityOutputReceivedEventArgs.cs" />
+    <Compile Include="Events\ActivityStatusEventArgs.cs" />
+    <Compile Include="Events\VerifyActivityFailedEventArgs.cs" />
+    <Compile Include="Events\MenuItemSelectedEventArgs.cs" />
+    <Compile Include="Controls\TaskProgressForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\TaskProgressForm.Designer.cs">
+      <DependentUpon>TaskProgressForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\MenuItem.cs" />
+    <Compile Include="Commands\Menu.cs" />
+    <Compile Include="ActivityHandlers\IActivityEventProvider.cs" />
+    <Compile Include="ActivityHandlers\IActivityProvider.cs" />
+    <Compile Include="ActivityHandlers\ActivityProviderBase.cs" />
+    <Compile Include="ActivityHandlers\MadbActivityProvider.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\AdbHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\AdbResponse.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\AllocationInfo.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\AndroidDebugBridge.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\AndroidDebugBridgeEventArgs.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\BusyBox.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ChunkHandler.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Client.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ClientData.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ClientEventArgs.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\CommandErrorReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ConsoleOutputReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\DdmPreferences.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Debugger.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\DebugPortManager.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Device.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\DeviceEventArgs.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\DeviceMonitor.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\EnvironmentVariablesReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ErrorCodeHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Exceptions\AdbException.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Exceptions\BadPacketException.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Exceptions\DeviceNotFoundException.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Exceptions\PackageInstallationException.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Exceptions\PermissionDeniedException.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Extensions\ArrayHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Extensions\DateTimeHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Extensions\FileInfoHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Extensions\PathHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Extensions\StringHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\FileEntry.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\FileListingService.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\FilePermission.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\FileSystem.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\GetPropReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IClient.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IDebugPortProvider.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IDevice.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IListingReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ILogOutput.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\InstallReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IO\LinuxPath.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IO\Rgb565.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IPacketConsumer.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\IShellOutputReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ISyncProgressMonitor.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\ListingServiceReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Log.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\LogLevel.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\MountPoint.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\MountPointReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\MultilineReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\NullOutputReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\NullSyncProgressMonitor.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\PackageManager.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\PackageManagerReceiver.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\RawImage.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\Reflection\ReflectionHelper.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\SyncResult.cs" />
+    <Compile Include="Managed.AndroidDebugBridge\SyncService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\Task.cs" />
+    <Compile Include="Controls\MenuItemControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MenuItemControl.Designer.cs">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Settings.cs" />
+    <EmbeddedResource Include="Controls\ConfigurationDialog.resx">
+      <DependentUpon>ConfigurationDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SplashDialog.resx">
+      <DependentUpon>SplashDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\TaskProgressForm.resx">
+      <DependentUpon>TaskProgressForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MenuItemControl.resx">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cherry.ico" />
+    <Content Include="commands.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Resources\109_AllAnnotations_Help_16x16_72.png" />
+    <None Include="Resources\023_Tip_16x16_72.png" />
+    <None Include="Resources\settings_16.png" />
+    <None Include="Resources\cherry.gif" />
+    <EmbeddedResource Include="Resources\CommandFile.xsd">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
