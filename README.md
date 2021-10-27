@@ -6,3 +6,5 @@ Originally, the program was developed to run the Den Eds update script, with whi
 CherryUpdater provides a simple menu structure, similar to the one in Den Eds' script, and allows the user to track the progress of updates in a "less technical" way.
 
 CherryUpdater is configurable, which means that the program does not have to be modified when making changes to the script of Den Eds itself.
+
+_- Rutger van Bergen - [github.com/rbergen](https://github.com/rbergen)_
